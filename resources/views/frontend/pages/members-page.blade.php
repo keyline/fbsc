@@ -3,7 +3,7 @@
     {{get_static_option('members_page_'.$user_select_lang_slug.'_name')}}
 @endsection
 @section('page-title')
-    {{get_static_option('members_page_'.$user_select_lang_slug.'_name')}}
+    {{get_static_option('members_page_'.$user_select_lang_slug.'_name')}}     
 @endsection
 @section('page-meta-data')
     <meta name="description" content="{{get_static_option('testimonial_page_'.$user_select_lang_slug.'_meta_description')}}">
@@ -19,7 +19,7 @@
                         <div class="smart-card">
                             {{-- <x-error-msg/>
                             <x-flash-msg/> --}}
-                            <h4 class="title">{{ __('All Members') }}</h4>
+                            <h4 class="title">{{ __('All Members') }}</h4>                        
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
