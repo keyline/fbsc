@@ -19,6 +19,11 @@ storage/*.key
 .env
 /storage/framework/cache/*
 /storage/framework/views/*
+/storage/*.key
+/storage/*.log
+/storage/framework/*
+!/storage/framework/.gitignore
+/storage/logs/*
 Homestead.yaml
 Homestead.json
 /.vagrant
