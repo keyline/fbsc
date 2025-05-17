@@ -421,6 +421,8 @@ Route::group(['middleware' => ['setlang:frontend', 'globalVariable', 'maintains_
     $image_gallery_page_slug = get_static_option('image_gallery_page_slug') ?? 'image-gallery';
     $video_gallery_page_slug = get_static_option('video_gallery_page_slug') ?? 'video-gallery';
     $donor_page_slug = get_static_option('donor_page_slug') ?? 'donor-list';
+    $member_page_slug = get_static_option('member_page_slug') ?? 'members';
+
 
     /*--------------------------------------
         FRONTEND: SERVICES ROUTES
@@ -467,6 +469,7 @@ Route::group(['middleware' => ['setlang:frontend', 'globalVariable', 'maintains_
     Route::get('/' . $image_gallery_page_slug . '', 'FrontendController@image_gallery_page')->name('frontend.image.gallery');
     Route::get('/' . $price_plan_page_slug . '/{id}', 'FrontendController@plan_order')->name('frontend.plan.order');
     Route::get('/' . $video_gallery_page_slug . '', 'FrontendController@video_gallery_page')->name('frontend.video.gallery');
+    Route::get('/' . $member_page_slug, 'FrontendController@members')->name('frontend.members');
 
     //user login
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('user.login');

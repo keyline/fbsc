@@ -1953,6 +1953,27 @@ ITEM;
         return view('frontend.pages.testimonial-page')->with(['all_testimonials' => $all_testimonials]);
     }
 
+    public function members()
+    {
+        $default_lang = Language::where('default', 1)->first();
+        $lang = !empty(session()->get('lang')) ? session()->get('lang') : $default_lang->slug;
+        // $membersData =  Member::orderBy('id','desc')->paginate(10);
+        $membersData = DB::table('members')
+        ->leftJoin('businesses', 'members.id', '=', 'businesses.member_id')
+        ->select(
+            'members.id',
+            'members.first_name as first_name',
+            'members.last_name as last_name',            
+            DB::raw('GROUP_CONCAT(businesses.business_name SEPARATOR ", ") as business_name'),
+            DB::raw('GROUP_CONCAT(DISTINCT businesses.industry SEPARATOR ", ") as business_category'),
+            DB::raw('GROUP_CONCAT(businesses.designation SEPARATOR ", ") as designation'),                        
+        )
+        ->groupBy('members.id','members.first_name', 'members.last_name')
+        ->orderBy('members.first_name', 'asc')
+        ->paginate(10); // keeps pagination        
+        return view('frontend.pages.members-page')->with(['membersData' => $membersData]);
+    }
+
     public function feedback_page()
     {
         return view('frontend.pages.feedback-page');
