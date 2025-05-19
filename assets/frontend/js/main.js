@@ -6,6 +6,25 @@
             $(".bgvdoplayer").YTPlayer();
         }
 
+        /*
+        ========================================
+            DataTable
+        ========================================
+        */
+       $('#simpletable').DataTable({
+            layout: {
+                topStart: {
+                    buttons: ['excel', 'pdf', 'print']
+                }
+            },
+            // columnDefs: [
+            //     {
+            //         orderable: false,
+            //         targets: 'no-sort' // First column (checkboxes)
+            //     }
+            // ]
+        });
+
        /*
         ========================================
             Navbar Toggler

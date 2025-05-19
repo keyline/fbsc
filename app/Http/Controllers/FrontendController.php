@@ -1964,13 +1964,16 @@ ITEM;
             'members.id',
             'members.first_name as first_name',
             'members.last_name as last_name',            
+            'members.phone as phone',            
+            'members.whatsapp as whatsapp',            
             DB::raw('GROUP_CONCAT(businesses.business_name SEPARATOR ", ") as business_name'),
             DB::raw('GROUP_CONCAT(DISTINCT businesses.industry SEPARATOR ", ") as business_category'),
             DB::raw('GROUP_CONCAT(businesses.designation SEPARATOR ", ") as designation'),                        
         )
         ->groupBy('members.id','members.first_name', 'members.last_name')
         ->orderBy('members.first_name', 'asc')
-        ->paginate(10); // keeps pagination        
+        // ->paginate(10); // keeps pagination  
+        ->get();      
         return view('frontend.pages.members-page')->with(['membersData' => $membersData]);
     }
 
